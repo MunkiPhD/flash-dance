@@ -7,10 +7,10 @@ Gem::Specification.new do |gem|
   gem.name          = "flash-dance"
   gem.version       = Flash::Dance::VERSION
   gem.authors       = ["MunkiPhD"]
-  gem.email         = ["munkiphd@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.email         = []
+  gem.description   = %q{Flash messages that make you dance.}
+  gem.summary       = %q{Works with rails flash messages to create sensible alert boxes from the get-go. See GitHub page for more info}
+  gem.homepage      = "http://github.com/MunkiPhD/flash-dance"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
