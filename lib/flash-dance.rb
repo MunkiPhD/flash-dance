@@ -1,7 +1,6 @@
+require 'action_controller'
 require "flash-dance/version"
+require 'flash-dance/controller_helpers'
 
-module Flash
-  module Dance
-    # Your code goes here...
-  end
-end
+# include the ControllerHelpers module into ActionController
+ActionController::Base.send(:include, FlashDance::ControllerHelpers)

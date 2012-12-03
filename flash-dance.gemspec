@@ -19,4 +19,7 @@ Gem::Specification.new do |gem|
 
 	# development dependencies
 	gem.add_development_dependency "rspec", "~>2.6"
+
+	# gem dependencies
+	gem.add_dependency "rails", "~> 3.2.0"
 end
