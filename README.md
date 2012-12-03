@@ -2,8 +2,29 @@ flash-dance
 ===========
 
 Flash messages that make you dance.
+##Quick Start##
+Get the gem:
+```ruby
+gem 'flash-dance', :git => 'https://github.com/MunkiPhD/flash-dance.git'
+```
+Run `bundle install`
 
+Then generate partials:
+```
+rails generate flash_dance:build_partials
+```
+In your controller:
+```ruby
+flash_me(:success, "It works! MUWAHAHA! #{Time.now}")
+flash_me_now(:info, "Request flash message here!")
+```
+In your view:
+```ruby
+<%= render_flash_messages %>
+```
+Then run your code - it should look pretty and make you want to dance with how easy that was!
 
+##Getting the gem##
 Since the gem isn't officially released yet, in your rails gemfile:
 ```ruby
 gem 'flash-dance', :git => 'https://github.com/MunkiPhD/flash-dance.git'
@@ -33,10 +54,11 @@ By default, you will get the following files:
       _warning.html.erb
 ```
 The stylesheet and javascript files are from [Twitter's Bootstrap](http://twitter.github.com/bootstrap/) and are the 
-bare minimum for creating nice alert boxes.
+bare minimum for creating nice alert boxes. They are the full versions (non-minified) for your editing pleasure.
 
 ##Controller##
-The gem is build on the premise that there are four different types of flash messages: *success*, *error*, *info*, and *warning*.
+The gem is built on the premise that there are four different types of flash messages: ***success***, ***error***,
+***info***, and ***warning***.
 
 When you want to add something to the flash, simply do:
 ```ruby
@@ -46,6 +68,10 @@ Or, if you want the flash to be part of the current request, do:
 ```ruby
 flash_me_now(:key, message)
 ```
+
+* `flash_me()` behaves like `flash[]`
+* `flash_me_now()` behaves like `flash.now[]`
+
 You can also add multiple messages to the same key, so we could do:
 ```ruby
 flash_me_now(:success, "Created a new castle Harrenhal!")
@@ -65,7 +91,7 @@ flash_me(:some_random_hash_key, "some random message")
 But it will crash when it attempts to render the flash messages because the partial doesn't exist.
 The reason that it doesn't fail gracefully: checking to see if a partial exists requires a hit on the disk, which can lead to performance issues. Therefore, just let it crash - you should be testing so it should be caught. 
 
-Simply create a partial under `flash_dance/` with the name `_{key}.html.erb` or use the generator to create it.
+For non-default flash keys, simply create a partial under `flash_dance/` with the name `_{key}.html.erb` or use the generator to create it.
 
 ##View##
 Wherever you want to place your alert messages, in your view use:
@@ -99,3 +125,8 @@ Components used from Twitter's bootstrap:
 * jQuery plugins
  - Transition
  - Alert messages
+
+
+####ToDo####
+* create a one off partial generator for other flash keys
+* default the :message hash to :success
