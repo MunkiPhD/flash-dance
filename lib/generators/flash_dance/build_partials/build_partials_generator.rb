@@ -7,9 +7,9 @@ module FlashDance
 		def	generate_partials
 			%w(Success Error Info Warning).each do |default_type|
 				template "default_partial.html.erb", "app/views/flash_dance/_#{default_type.downcase}.html.erb", {:type => default_type}
-
-				copy_bootstrap if options.bootstrap?
 			end
+			
+			copy_bootstrap if options.bootstrap?
 		end
 
 
